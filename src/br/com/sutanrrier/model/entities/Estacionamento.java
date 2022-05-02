@@ -1,14 +1,15 @@
 package br.com.sutanrrier.model.entities;
 
+import java.sql.Date;
 import java.util.Objects;
 
 public class Estacionamento {
 	private Integer id;
 	private String nome;
-	private String dataCriacao;
+	private Date dataCriacao;
 	
 	//Construtores
-	public Estacionamento(Integer id, String nome, String dataCriacao) {
+	public Estacionamento(Integer id, String nome, Date dataCriacao) {
 		this.id = id;
 		this.nome = nome;
 		this.dataCriacao = dataCriacao;
@@ -31,11 +32,11 @@ public class Estacionamento {
 		this.nome = nome;
 	}
 
-	public String getDataCriacao() {
+	public Date getDataCriacao() {
 		return dataCriacao;
 	}
 
-	public void setDataCriacao(String dataCriacao) {
+	public void setDataCriacao(Date dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
 

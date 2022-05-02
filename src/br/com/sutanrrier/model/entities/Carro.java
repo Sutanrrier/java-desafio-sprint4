@@ -1,5 +1,6 @@
 package br.com.sutanrrier.model.entities;
 
+import java.util.Date;
 import java.util.Objects;
 
 public class Carro {
@@ -7,11 +8,11 @@ public class Carro {
 	private String cor;
 	private String placa;
 	private Double velocidademax;
-	private String dataCriacao;
+	private Date dataCriacao;
 	private Integer idEstacionamento;
 	
 	//Construtores
-	public Carro(Integer id, String cor, String placa, Double velocidademax, String dataCriacao,
+	public Carro(Integer id, String cor, String placa, Double velocidademax, Date dataCriacao,
 			Integer idEstacionamento) {
 		this.id = id;
 		this.cor = cor;
@@ -54,11 +55,11 @@ public class Carro {
 		this.velocidademax = velocidademax;
 	}
 
-	public String getDataCriacao() {
+	public Date getDataCriacao() {
 		return dataCriacao;
 	}
 
-	public void setDataCriacao(String dataCriacao) {
+	public void setDataCriacao(Date dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
 
