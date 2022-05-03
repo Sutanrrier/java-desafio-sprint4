@@ -2,7 +2,10 @@ package br.com.sutanrrier.model.jdbc;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.sutanrrier.model.entities.Estacionamento;
@@ -59,8 +62,28 @@ public class EstacionamentoJDBC implements EstacionamentoSQLMethods{
 
 	@Override
 	public List<Estacionamento> selectAll() {
-
-		return null;
+		List<Estacionamento> listaEstacionamento = new ArrayList<>();
+		
+		try {
+			Statement statement = conn.createStatement();
+			ResultSet resultado = statement.executeQuery("SELECT * FROM estacionamento");
+			
+			while(resultado.next()) {
+				Estacionamento estacionamento = new Estacionamento(
+						resultado.getInt("id"),
+						resultado.getString("nome"),
+						resultado.getDate("datacriacao"));	
+						
+				listaEstacionamento.add(estacionamento);
+			}
+			
+			resultado.close();
+			statement.close();
+		} 
+		catch (SQLException e) {
+			System.out.println("Erro! -> " + e.getMessage());;
+		}
+		return listaEstacionamento;
 	}
 
 }

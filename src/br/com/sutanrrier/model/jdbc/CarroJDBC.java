@@ -2,7 +2,10 @@ package br.com.sutanrrier.model.jdbc;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.sutanrrier.model.entities.Carro;
@@ -33,6 +36,8 @@ public class CarroJDBC implements CarroSQLMethods {
 			int linhas = statement.executeUpdate();
 			
 			System.out.println(linhas + " linhas alteradas!");
+			
+			statement.close();
 		}
 		catch(SQLException e) {
 			System.out.println("Erro! -> " + e.getMessage());
@@ -49,6 +54,8 @@ public class CarroJDBC implements CarroSQLMethods {
 			int linhas = statement.executeUpdate();
 			
 			System.out.println(linhas + " linhas alteradas!");
+
+			statement.close();
 		}
 		catch(SQLException e) {
 			System.out.println("Erro! -> " + e.getMessage());
@@ -62,8 +69,31 @@ public class CarroJDBC implements CarroSQLMethods {
 
 	@Override
 	public List<Carro> selectAll() {
+		List<Carro> listaCarros = new ArrayList<>();
 		
-		return null;
+		try {
+			Statement statement = conn.createStatement();
+			ResultSet resultado = statement.executeQuery("SELECT * FROM carro");
+			
+			while(resultado.next()) {
+				Carro carro = new Carro(
+						resultado.getInt("id"),
+						resultado.getString("cor"),
+						resultado.getString("placa"),
+						resultado.getDouble("velocidademax"),
+						resultado.getDate("datacriacao"),
+						resultado.getInt("estacionamento_id"));
+				
+				listaCarros.add(carro);
+			}
+			
+			resultado.close();
+			statement.close();
+		} 
+		catch (SQLException e) {
+			System.out.println("Erro! -> " + e.getMessage());;
+		}
+		return listaCarros;
 	}
 	
 }

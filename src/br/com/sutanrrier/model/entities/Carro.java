@@ -88,5 +88,12 @@ public class Carro {
 		Carro other = (Carro) obj;
 		return Objects.equals(id, other.id);
 	}
+
+	//ToString
+	@Override
+	public String toString() {
+		return "Carro [id=" + id + ", cor=" + cor + ", placa=" + placa + ", velocidademax=" + velocidademax
+				+ ", dataCriacao=" + dataCriacao + ", idEstacionamento=" + idEstacionamento + "]";
+	}
 	
 }
