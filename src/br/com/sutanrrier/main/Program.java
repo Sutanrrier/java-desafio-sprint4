@@ -15,9 +15,9 @@ import br.com.sutanrrier.model.jdbc.EstacionamentoJDBC;
 public class Program {
 	public static void main(String[] args) {
 		
-		Estacionamento estacionamento1 = new Estacionamento(1, "Estacionamento Rio Mar", Date.valueOf(LocalDate.now()));
-		Carro carro1 = new Carro(1, "Branco", "HYS-1816", 300.0, Date.valueOf(LocalDate.now()), 1);
-		Carro carro2 = new Carro(2, "Azul", "HUY-0038", 320.0, Date.valueOf(LocalDate.now()), 1);
+		Estacionamento estacionamento1 = new Estacionamento(3, "Estacionamento Flow", Date.valueOf(LocalDate.now()));
+		Carro carro1 = new Carro(8, "Branco", "HYS-1816", 300.0, Date.valueOf(LocalDate.now()), 1);
+		Carro carro2 = new Carro(9, "Azul", "HUY-0038", 320.0, Date.valueOf(LocalDate.now()), 1);
 		
 		try {
 			Connection conn = DB.getConnection();
@@ -46,7 +46,8 @@ public class Program {
 			}
 			
 			// Apagando elementos
-			//carroJDBC.deleteById(2);
+			//carroJDBC.deleteById(8);
+			//estacionamentoJDBC.deleteById(3);
 			
 			//Fechando conexão
 			conn.close();
