@@ -38,7 +38,18 @@ public class EstacionamentoJDBC implements EstacionamentoSQLMethods{
 
 	@Override
 	public void update(Estacionamento obj) {
-		
+		try {
+			PreparedStatement statement = conn.prepareStatement("UPDATE estacionamento "
+					+ "SET nome = 'Estacionamento Zé Graça'"
+					+ "WHERE id = ?");
+			statement.setInt(1, obj.getId());
+			int linhas = statement.executeUpdate();
+			
+			System.out.println(linhas + " linhas alteradas!");
+		}
+		catch(SQLException e) {
+			System.out.println("Erro! -> " + e.getMessage());
+		}
 	}
 
 	@Override

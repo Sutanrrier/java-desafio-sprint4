@@ -35,13 +35,24 @@ public class CarroJDBC implements CarroSQLMethods {
 			System.out.println(linhas + " linhas alteradas!");
 		}
 		catch(SQLException e) {
-			System.out.println("Erro: " + e.getMessage());
+			System.out.println("Erro! -> " + e.getMessage());
 		}
 	}
 
 	@Override
 	public void update(Carro obj) {
-		
+		try {
+			PreparedStatement statement = conn.prepareStatement("UPDATE carro "
+					+ "SET placa = 'SEM PLACA'"
+					+ "WHERE id = ?");
+			statement.setInt(1, obj.getId());
+			int linhas = statement.executeUpdate();
+			
+			System.out.println(linhas + " linhas alteradas!");
+		}
+		catch(SQLException e) {
+			System.out.println("Erro! -> " + e.getMessage());
+		}
 	}
 
 	@Override
