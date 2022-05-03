@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 
 import br.com.sutanrrier.db.DB;
+import br.com.sutanrrier.model.entities.Carro;
 import br.com.sutanrrier.model.entities.Estacionamento;
 import br.com.sutanrrier.model.jdbc.CarroJDBC;
 import br.com.sutanrrier.model.jdbc.EstacionamentoJDBC;
@@ -21,10 +22,14 @@ public class Program {
 			//Inserindo Estacionamento
 			estacionamentoJDBC.insert(new Estacionamento(1, "Estacionamento Rio Mar", Date.valueOf(LocalDate.now())));
 			
+			//Inserindo carros
+			carroJDBC.insert(new Carro(1, "Branco", "HYS-1816", 300.0, Date.valueOf(LocalDate.now()), 1));
+			
+			//Fechando conexão
 			conn.close();
 		}
 		catch(SQLException e) {
-			System.out.println("Erro: " + e.getMessage());
+			System.out.println("Erro! -> " + e.getMessage());
 		}
 	}
 }
