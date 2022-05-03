@@ -64,7 +64,19 @@ public class CarroJDBC implements CarroSQLMethods {
 
 	@Override
 	public void deleteById(Integer id) {
-		
+		try {
+			PreparedStatement statement = conn.prepareStatement("DELETE FROM carro "
+					+ "WHERE id = ?");
+			statement.setInt(1, id);
+			int linhas = statement.executeUpdate();
+			
+			System.out.println(linhas + " linhas alteradas!");
+			
+			statement.close();
+		}
+		catch(SQLException e) {
+			System.out.println("Erro! -> " + e.getMessage());
+		}
 	}
 
 	@Override

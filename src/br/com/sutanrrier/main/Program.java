@@ -44,6 +44,10 @@ public class Program {
 			for(Estacionamento estacionamento : listaEstacionamentos) {
 				System.out.println(estacionamento);
 			}
+			
+			// Apagando elementos
+			//carroJDBC.deleteById(2);
+			
 			//Fechando conexão
 			conn.close();
 		}
